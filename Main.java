@@ -11,6 +11,7 @@ class StringMatcher {
 
     public void findBook(String pat) {
         int counter = 0;
+        boolean found = false;
         String split[] = pat.split(" ");
         String patterns[] = new String[split.length + 1];
         patterns[0] = pat;
@@ -21,12 +22,16 @@ class StringMatcher {
             for(int j = 0; j < bookTitles.length; j++) {
                 if(kmp(bookTitles[j].toLowerCase(), patterns[i].toLowerCase())) {
                     System.out.println(bookTitles[j]);
+                    found = true;
                     counter++;
                 }
                 if(counter == 5) { 
                     break;
                 }
             }
+        }
+        if(!found) {
+            System.out.println("No book found!");
         }
     }
 
